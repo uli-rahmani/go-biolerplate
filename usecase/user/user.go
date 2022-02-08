@@ -82,13 +82,6 @@ func (uu UserDataUsecase) VerifyOTP(data du.VerifyOTPRequest) (*general.JWTAcces
 	// 	return nil, "", err
 	// }
 
-	// if data.IsFirstOTP {
-	// 	err = uu.Repo.UpdateStatus(nil, cu.UserStatusActive, user.ID)
-	// 	if err != nil {
-	// 		return nil, "", err
-	// 	}
-	// }
-
 	session, err := utils.GetEncrypt([]byte(uu.Conf.App.SecretKey), fmt.Sprintf("%v", 1))
 	if err != nil {
 		uu.Log.WithField("user id", 1).WithError(err).Error("VerifyOTP | fail to get token data from infra")
